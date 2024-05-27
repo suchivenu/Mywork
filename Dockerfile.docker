@@ -1,0 +1,23 @@
+FROM ubuntu:latest
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    apache2 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+COPY index.html /var/www/html
+CMD ["apachectl", "-D", "FOREGROUND"]
+
+to create container image 
+
+docker build -t sulochana:1.0.0 .
+
+to create the container 
+
+docker run -itd --name sulochana -p 80:80 sulochana:1.0.0
+
+to crete the index html
+
+<html>
+        <h1> Test Docker file website </h1>
+</html>
+
